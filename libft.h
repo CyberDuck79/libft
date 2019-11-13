@@ -6,7 +6,7 @@
 /*   By: fhenrion <fhenrion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 13:45:31 by fhenrion          #+#    #+#             */
-/*   Updated: 2019/11/08 13:19:34 by fhenrion         ###   ########.fr       */
+/*   Updated: 2019/11/13 10:48:37 by fhenrion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,13 +74,13 @@ void				ft_lstdelone(t_list *lst, void (*del)(void*));
 void				ft_lstclear(t_list **lst, void (*del)(void*));
 void				ft_lstiter(t_list *lst, void (*f)(void *elem));
 t_list				*ft_lstmap(t_list *lst, void *(*f)(void *elem), \
-								void (*del)(void *));
+					void (*del)(void *));
 t_list				*ft_lstat(t_list *lst, size_t index);
 void				ft_putstrlst_fd(t_list *lst, char separator, int fd);
 void				ft_putnbrlst_fd(t_list *lst, char separator, int fd);
 void				ft_lstreverse(t_list **lst);
 void				ft_lstmerge(t_list *lst1, t_list *lst2);
-int					ft_iswhitespace(int c);
+int					ft_isspace(int c);
 void				ft_memdel(void **ap);
 void				ft_putchar(char c);
 void				ft_putendl(char const *s);

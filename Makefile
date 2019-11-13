@@ -6,7 +6,7 @@
 #    By: fhenrion <fhenrion@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/17 13:41:10 by fhenrion          #+#    #+#              #
-#    Updated: 2019/11/08 10:56:03 by fhenrion         ###   ########.fr        #
+#    Updated: 2019/11/13 10:45:36 by fhenrion         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,9 @@ CFLAGS = -Werror -Wall -Wextra
 
 .PHONY: clean fclean all re bonus
 
-all: $(O_SRC) $(NAME)
+all: $(O_SRC)
+	@ar rc $(NAME) $(O_SRC)
+	@ranlib $(NAME)
 	@echo "\033[0;32mLibrary Compilation OK\033[0m"
 
 bonus: $(O_SRC) $(O_BONUS_SRC)
@@ -41,9 +43,7 @@ bonus: $(O_SRC) $(O_BONUS_SRC)
 	@ranlib $(NAME)
 	@echo "\033[0;32mLibrary Bonus Addition OK\033[0m"
 
-$(NAME):
-	@ar rc $@ $(O_SRC)
-	@ranlib $@
+$(NAME): all
 
 %.o : %.c ${HDR_NAME}
 	$(CC) -c $(CFLAGS) -I $(HDR_NAME) $< -o $@
@@ -57,4 +57,4 @@ fclean: clean
 	@/bin/rm -f $(NAME)
 	@echo "\033[0;32mLibrary cleaning OK\033[0m"
 
-re: fclean all
+re: fclean $(NAME)

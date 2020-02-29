@@ -6,7 +6,7 @@
 /*   By: fhenrion <fhenrion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 13:45:31 by fhenrion          #+#    #+#             */
-/*   Updated: 2019/11/13 10:48:37 by fhenrion         ###   ########.fr       */
+/*   Updated: 2020/02/29 11:51:03 by fhenrion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,21 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stddef.h>
+# include <fcntl.h>
+
+# define ERROR -1
+# define NOT_FOUND -1
+# define END 0
+# define LINE 1
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1024
+# endif
 
 typedef struct		s_list
 {
-	void			*content;
 	struct s_list	*next;
+	void			*content;
 }					t_list;
 
 typedef enum		e_bool
@@ -37,6 +47,8 @@ void				*ft_memmove(void *dst, const void *src, size_t len);
 void				*ft_memchr(const void *s, int c, size_t len);
 int					ft_memcmp(const void *s1, const void *s2, size_t len);
 size_t				ft_strlen(const char *s);
+size_t				ft_strcpy(char *dest, const char *src);
+size_t				ft_strccpy(char *dest, const char *src, char c);
 int					ft_islower(int c);
 int					ft_isupper(int c);
 int					ft_isalpha(int c);
@@ -97,5 +109,6 @@ t_list				*ft_lstchrsplit(const char *s, char c);
 void				ft_lststrsort(t_list *lst);
 void				ft_lststrrsort(t_list *lst);
 void				ft_putstrtab_fd(char **tab, char separator, int fd);
+int					get_next_line(const int fd, char **line);
 
 #endif

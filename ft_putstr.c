@@ -6,7 +6,7 @@
 /*   By: fhenrion <fhenrion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/09 18:47:54 by fhenrion          #+#    #+#             */
-/*   Updated: 2019/11/07 13:41:47 by fhenrion         ###   ########.fr       */
+/*   Updated: 2020/02/29 11:03:40 by fhenrion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,7 @@
 
 void	ft_putstr(char const *s)
 {
-	unsigned int	i;
-
-	i = 0;
-	if (!s)
+	if (s == NULL)
 		return ;
-	while (s[i])
-		i++;
-	write(1, s, i);
+	write(STDOUT_FILENO, s, ft_strlen(s));
 }

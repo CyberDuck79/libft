@@ -1,18 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fhenrion <fhenrion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/17 11:27:39 by fhenrion          #+#    #+#             */
-/*   Updated: 2020/02/26 10:11:36 by fhenrion         ###   ########.fr       */
+/*   Created: 2020/02/29 11:08:54 by fhenrion          #+#    #+#             */
+/*   Updated: 2020/02/29 11:50:51 by fhenrion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putchar(char c)
+size_t		ft_strcpy(char *dest, const char *src)
 {
-	write(1, &c, 1);
+	size_t	index;
+
+	index = 0;
+	while (src[index])
+	{
+		dest[index] = src[index];
+		index++;
+	}
+	dest[index] = src[index];
+	return (index);
 }
